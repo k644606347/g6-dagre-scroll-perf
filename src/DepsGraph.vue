@@ -9,6 +9,7 @@
       <span>层级={{ layers }}级</span>
       <span>nodes={{ nodes.length }}</span>
       <span>edges={{ edges.length }}</span>
+      <span>图元总数={{ nodes.length * 5  + edges.length }}</span>
       <!-- <span>layout time={{ layoutTime }}</span>
       <span>render time={{ renderTime }}</span> -->
     </div>
