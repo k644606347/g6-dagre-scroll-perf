@@ -9,8 +9,8 @@
       <span>层级={{ layers }}级</span>
       <span>nodes={{ nodes.length }}</span>
       <span>edges={{ edges.length }}</span>
-      <span>layout time={{ layoutTime }}</span>
-      <span>render time={{ renderTime }}</span>
+      <!-- <span>layout time={{ layoutTime }}</span>
+      <span>render time={{ renderTime }}</span> -->
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default defineComponent({
     const graphElRef = ref<HTMLElement>();
     const graphInstance = shallowRef<Graph | undefined>();
 
-    const layers = ref(8);
+    const layers = ref(10);
     const mockData = mock(layers.value);
     const nodes = shallowRef<NodeConfig[]>(mockData.nodes);
     const edges = shallowRef<EdgeConfig[]>(mockData.edges);
@@ -79,6 +79,7 @@ export default defineComponent({
       console.time("g6 first layout");
       console.time("g6 first render");
       await nextTick();
+      
       if (!graphElRef.value) {
         return;
       }
@@ -194,8 +195,8 @@ export default defineComponent({
       layers,
       nodes,
       edges,
-      layoutTime,
-      renderTime,
+      // layoutTime,
+      // renderTime,
       graphElRef,
       graphInstance,
       focusRoot() {
@@ -231,7 +232,7 @@ function initG6(
         // 重写scroll-canvas behavior
         {
           type: "rcp-scroll-canvas",
-          // enableOptimize: true,
+          enableOptimize: true,
         },
         //{
         //  type: "scroll-canvas",
@@ -252,8 +253,8 @@ function initG6(
       // align: 'UL',
       controlPoints: true,
       // sortByCombo: true,
-      nodesep: 15,
-      ranksep: 70,
+      nodesep: 50,
+      ranksep: 80,
       // workerScriptURL: 'https://unpkg.com/@antv/layout@latest/dist/layout.min.js',
     },
     defaultNode: {
@@ -264,9 +265,9 @@ function initG6(
       // type: 'line',
       type: "cubic-horizontal",
       // type: "polyline",
-      routeCfg: {
-        simple: true,
-      },
+      // routeCfg: {
+      //   simple: true,
+      // },
       style: {
         startArrow: {
           path: G6.Arrow.triangle(8, 8, 0),
@@ -282,7 +283,7 @@ function initG6(
     if (graph.get("destroyed")) {
       return;
     }
-    graph.changeSize(container.scrollWidth, container.scrollHeight);
+    graph.changeSize(container.clientWidth, container.clientHeight);
   };
 
   return graph;
@@ -303,6 +304,7 @@ function getNodeModelByEvent(e: IG6GraphEvent, graph: Graph) {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border: 1px solid #ccc;
 }
 .deps-graph-content {
   position: relative;

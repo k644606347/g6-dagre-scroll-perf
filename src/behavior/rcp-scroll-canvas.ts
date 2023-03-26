@@ -41,6 +41,7 @@ type IBase = typeof defaultCfg;
 
 type Action = 'zoom' | 'scroll';
 interface IRcpScrollCanvas extends IBase {
+    type: string;
     getDefaultCfg(): IBase;
     getEvents(): { wheel: 'onWheel' };
     bboxCacheMap: Map<string, IBBox> | null;
@@ -71,6 +72,7 @@ interface IRcpScrollCanvas extends IBase {
 }
 
 const rcpScrollCanvas: IRcpScrollCanvas = {
+    type: 'rcp-scroll-canvas',
     ...defaultCfg,
     getDefaultCfg() {
         return defaultCfg;

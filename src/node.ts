@@ -105,13 +105,7 @@ export function registerNode() {
             textBaseline: "bottom",
             x: contentRectBBox.minX + labelConfig.paddingLeft,
             y: contentRectBBox.minY + labelConfig.paddingTop,
-            text: fittingString(String(id), {
-              maxWidth:
-                contentRectConfig.width -
-                labelConfig.paddingLeft -
-                labelConfig.paddingRight,
-              fontSize: labelConfig.fontSize,
-            }),
+            text: String(id),
             fill: colors.label,
             cursor: "pointer",
           },
@@ -125,7 +119,7 @@ export function registerNode() {
         };
         const relatedInfo = group.addShape("text", {
           attrs: {
-            textAlign: "right",
+            // textAlign: "right",
             textBaseline: "bottom",
             x: contentRectBBox.maxX - relatedInfoConfig.paddingRight,
             y: contentRectBBox.maxY - relatedInfoConfig.paddingBottom,

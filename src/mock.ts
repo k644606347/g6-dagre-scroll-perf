@@ -6,7 +6,7 @@ export function mock(maxDepth = 5) {
 
   let nodeCount = 0;
   function genNodeId(nodeDepth: number) {
-    return "depth_" + String(nodeDepth) + "_" + nodeCount++ + "_" + Date.now();
+    return "depth_" + String(nodeDepth) + "_" + nodeCount++ + "_test";
   }
 
   function makeMock(sources: string[], curDepth = 1) {
