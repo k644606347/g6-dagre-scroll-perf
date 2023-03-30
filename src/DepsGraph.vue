@@ -9,7 +9,7 @@
       <span>层级={{ layers }}级</span>
       <span>nodes={{ nodes.length }}</span>
       <span>edges={{ edges.length }}</span>
-      <span>图元总数={{ nodes.length * 5  + edges.length }}</span>
+      <span>图元总数={{ nodes.length * 5 + edges.length }}</span>
       <!-- <span>layout time={{ layoutTime }}</span>
       <span>render time={{ renderTime }}</span> -->
     </div>
@@ -38,8 +38,8 @@ import G6, {
 import { registerNode } from "./node";
 import { toggleCollapse } from "./utils";
 import { mock } from "./mock";
-import rcpScrollCanvas from './behavior/rcp-scroll-canvas';
-registerBehavior('rcp-scroll-canvas', rcpScrollCanvas);
+import rcpScrollCanvas from "./behavior/rcp-scroll-canvas";
+registerBehavior("rcp-scroll-canvas", rcpScrollCanvas);
 
 registerNode();
 type IDepsGraphData = {
@@ -80,7 +80,7 @@ export default defineComponent({
       console.time("g6 first layout");
       console.time("g6 first render");
       await nextTick();
-      
+
       if (!graphElRef.value) {
         return;
       }
@@ -237,8 +237,8 @@ function initG6(
         },
         //{
         //  type: "scroll-canvas",
-          // TODO: 这个配置会隐藏node的keyShape，可能显示效果不好
-          // enableOptimize: true,
+        // TODO: 这个配置会隐藏node的keyShape，可能显示效果不好
+        // enableOptimize: true,
         //},
         {
           type: "drag-canvas",
@@ -254,7 +254,7 @@ function initG6(
       // align: 'UL',
       controlPoints: true,
       // sortByCombo: true,
-      nodesep: 50,
+      nodesep: 10,
       ranksep: 80,
       // workerScriptURL: 'https://unpkg.com/@antv/layout@latest/dist/layout.min.js',
     },
